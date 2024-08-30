@@ -12,6 +12,7 @@ import { UsersService } from './users/users.service';
 import { AuthController } from './auth/auth.controller';
 import { PassportModule } from '@nestjs/passport';
 import { GithubStrategy } from './auth/strategy/github.strategy';
+import { TeamModule } from './team/team.module';
 
 
 @Module({
@@ -19,7 +20,7 @@ import { GithubStrategy } from './auth/strategy/github.strategy';
     isGlobal: true, // Makes the module available globally
   }),
   AuthModule,
-  UsersModule,PassportModule],
+  UsersModule,PassportModule, TeamModule],
   controllers: [AppController,AuthController],
   providers: [AppService,AuthService, UsersService, PrismaService, GithubStrategy],
 })

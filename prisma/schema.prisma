@@ -7,13 +7,27 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
+model team {
+    id          String    @id @default(uuid())
+    name        String?   @unique
+    status      String?
+    created_at  DateTime  @default(now())
+    modified_at DateTime?
+    description String?
+    teamUrl     String?
+    contact     String?
+    user user[]
+}
+
 model user {
     id       String @id @default(uuid())
     githubId String @unique
-    username String
+    username String?
     email    String @unique
-    avatar   String
+    avatar   String?
     role     Role   @default(USER)
+    team     team   @relation(fields: [teamId], references: [id], onDelete: Cascade)
+    teamId   String
 }
 
 enum Role {
