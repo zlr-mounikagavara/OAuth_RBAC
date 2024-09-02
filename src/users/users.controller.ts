@@ -13,7 +13,7 @@ export class UsersController {
   @Get('/')
   @UseGuards(AuthGuard('github'))
   @UseGuards(RolesGuard)
-  @Roles(Role.USER)  // Use the enum value here
+  @Roles(Role.USER) 
   findAll(@Request() req) {
     console.log(req.user, "Authenticated user");  
     return this.usersService.findAll();

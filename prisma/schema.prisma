@@ -16,7 +16,7 @@ model team {
     description String?
     teamUrl     String?
     contact     String?
-    user user[]
+    // user user[]
 }
 
 model user {
@@ -26,8 +26,8 @@ model user {
     email    String @unique
     avatar   String?
     role     Role   @default(USER)
-    team     team   @relation(fields: [teamId], references: [id], onDelete: Cascade)
-    teamId   String
+    // team     team   @relation(fields: [teamId], references: [id], onDelete: Cascade)
+    // teamId   String
 }
 
 enum Role {

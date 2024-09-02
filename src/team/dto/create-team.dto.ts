@@ -52,8 +52,8 @@ export class CreateTeamDto {
   description: string;
 
   @ApiProperty({
-    name: 'organizationUrl',
-    description: 'URL of the organization',
+    name: 'teamUrl',
+    description: 'URL of the team',
     example: 'https://www.example.com',
   })
   @IsUrl()
@@ -62,22 +62,12 @@ export class CreateTeamDto {
 
   @ApiProperty({
     name: 'contact',
-    description: 'Contact number of the organization',
+    description: 'Contact number of the team',
     example: 1234567890,
   })
   @IsInt()
   @IsOptional()
   contact?: string;
-  @ApiProperty({
-    name: 'organizationId',
-    description: 'Organization ID associated with the domain',
-    example: 'org123',
-    required: false,
-  })
-  @IsString()
-  @IsOptional()
-  @IsNotEmpty()
-  teamId?: string;
   
  
 }

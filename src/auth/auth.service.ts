@@ -22,7 +22,7 @@ export class AuthService {
           username: profile.username,
           email: profile.email,
           avatar: profile.avatar,
-          role: Role.USER, // Assigning the role here
+          role: Role.USER,
         },
       });
     }
