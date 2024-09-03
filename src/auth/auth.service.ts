@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
-
 import { Role } from '@prisma/client';
 import { PrismaService } from 'src/users/prisma/prisma.service';
 
@@ -22,11 +21,17 @@ export class AuthService {
           username: profile.username,
           email: profile.email,
           avatar: profile.avatar,
-          role: Role.USER,
+          role: Role.ADMIN,
         },
       });
     }
 
     return user;
+  }
+
+  async findById(id: string): Promise<any> {
+    return this.prisma.user.findUnique({
+      where: { id },
+    });
   }
 }

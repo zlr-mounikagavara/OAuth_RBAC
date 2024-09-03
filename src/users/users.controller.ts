@@ -13,7 +13,7 @@ export class UsersController {
   @Get('/')
   @UseGuards(AuthGuard('github'))
   @UseGuards(RolesGuard)
-  @Roles(Role.USER) 
+  @Roles(Role.ADMIN) 
   findAll(@Request() req) {
     console.log(req.user, "Authenticated user");  
     return this.usersService.findAll();
