@@ -1,27 +1,23 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthModule } from './auth/auth.module';
-import { ConfigModule } from '@nestjs/config';
-import { UsersModule } from './users/users.module';
-
-import { PrismaService } from './users/prisma/prisma.service';
-import { AuthService } from './auth/auth.service';
-import { UsersService } from './users/users.service';
-
-import { AuthController } from './auth/auth.controller';
-import { PassportModule } from '@nestjs/passport';
-import { GithubStrategy } from './auth/strategy/github.strategy';
 import { TeamModule } from './team/team.module';
+import { ConfigModule } from '@nestjs/config';
+
+import { PrismaModule } from './prisma/prisma.module';
+import { AuthModule } from './auth/auth.module';
+import { JwtModule } from '@nestjs/jwt';
+import { UserModule } from './users/users.module';
+
+
 
 
 @Module({
-  imports: [ ConfigModule.forRoot({
-    isGlobal: true, // Makes the module available globally
-  }),
-  AuthModule,
-  UsersModule,PassportModule, TeamModule],
-  controllers: [AppController,AuthController],
-  providers: [AppService,AuthService, UsersService, PrismaService, GithubStrategy],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true, 
+    }),UserModule,TeamModule,PrismaModule, AuthModule],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
